@@ -8,3 +8,19 @@
   gap: 2rem;
   align-items: flex-start;
 }
+
+/* 
+  When the screen width is smaller than 768px, the following styles will be applied.
+  Since we are using relative units (rem), it's possible to change the font-size in our html.
+  By doing this, every style that uses rem will be affected and resized for smaller screens.
+*/
+@media (max-width: 768px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  /* We also changed our .wrapper from two columns to just one */
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+}
