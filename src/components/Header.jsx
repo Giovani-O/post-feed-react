@@ -7,6 +7,7 @@ export function Header() {
     // To use a class from a scoped css file, I have to write it as an object
     <header className={styles.header}>
       <img src={igniteLogo} alt="Logo do Ignite" />
+      <h1>Ignite Feed</h1>
     </header>
   );
 }
