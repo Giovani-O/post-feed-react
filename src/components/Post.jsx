@@ -7,6 +7,3 @@ export function Post(props) {
     </div>
   )
 }
-
-// Default Export
-// export default Post
