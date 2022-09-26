@@ -2,7 +2,13 @@ import { ThumbsUp, Trash } from "phosphor-react";
 import { Avatar } from "./Avatar";
 import styles from "./Comment.module.css";
 
-export function Comment({ content }) {
+// It is possible to send functions from other components as props
+// In this case, deleteComment is a function from Comment.jsx
+export function Comment({ content, onDeleteComment }) {
+  function handleDeleteComment() {
+    onDeleteComment(content);
+  }
+
   return (
     <div className={styles.comment}>
       <Avatar hasBorder={false} src="https://avatars.githubusercontent.com/u/50748653?v=4" />
@@ -20,7 +26,7 @@ export function Comment({ content }) {
               </time>
             </div>
 
-            <button title="Excluir comentário">
+            <button onClick={handleDeleteComment} title="Excluir comentário">
               <Trash size={24}/>
             </button>
           </header>
