@@ -1,12 +1,23 @@
 import { ThumbsUp, Trash } from "phosphor-react";
+import { useState } from "react";
 import { Avatar } from "./Avatar";
 import styles from "./Comment.module.css";
 
 // It is possible to send functions from other components as props
 // In this case, deleteComment is a function from Comment.jsx
 export function Comment({ content, onDeleteComment }) {
+  const [likeCount, setLikeCount] = useState(0);
+
   function handleDeleteComment() {
     onDeleteComment(content);
+  }
+
+  function handleLikeComment() {
+    // Every time you need to update an state or information that depends on its previous value
+    // you should use the pattern below, also known as 'closure'
+    setLikeCount((state) => {
+      return state + 1;
+    }); 
   }
 
   return (
@@ -35,9 +46,9 @@ export function Comment({ content, onDeleteComment }) {
         </div>
 
         <footer>
-          <button>
+          <button onClick={handleLikeComment}>
             <ThumbsUp />
-            Aplaudir <span>20</span>
+            Aplaudir <span>{likeCount}</span>
           </button>
         </footer>
       </div>
